@@ -20,8 +20,8 @@ export default function Form() {
     const formSchema = yup.object().shape({
         name: yup.string().required('Please enter a name').min(2),
         size: yup.string().required('Please select a size'),
-        sauce: yup.string().required(),
-        toppings: yup.string().required(),
+        sauce: yup.boolean().oneOf([true]),
+        toppings: yup.boolean().oneOf([true]),
         instructions: yup.string()
     })
 
@@ -77,6 +77,7 @@ export default function Form() {
                     name='name'
                     onChange={handleChange}
                     value={pizzaForm.name}
+                    data-cy='name'
                     />
                     {errors.name.length > 0 ? <p className='errors'>{errors.name}</p> : null}
             </label>
@@ -98,7 +99,8 @@ export default function Form() {
          </label>
 
 <div className='sauce'>Choice of Sauce </div>
-      <label htmlFor='sauce'>
+
+      <label htmlFor='sauce' className='sauce-form'>
              
               <input
                   id='sauce'
@@ -108,9 +110,9 @@ export default function Form() {
                   checked={pizzaForm.sauce}
                   value='Original Marinara'
                   />
-               Original Marinara    
+              <p className='sauce-choice'>Original Marinara</p>  
           </label>
-          <label htmlFor='sauce'>
+          <label htmlFor='sauce' className='sauce-form'>
             
             <input
                 id='sauce'
@@ -120,9 +122,9 @@ export default function Form() {
                 checked={pizzaForm.sauce}
                 value='Garlic Ranch'
                 />
-               Garlic Ranch 
+               <p className='sauce-choice'>Garlic Ranch</p>  
         </label>
-        <label htmlFor='sauce'>
+        <label htmlFor='sauce' className='sauce-form'>
             
             <input
                 id='sauce'
@@ -132,9 +134,9 @@ export default function Form() {
                 checked={pizzaForm.sauce}
                 value='Alfredo Sauce'
                 />
-              Alfredo Sauce  
+              <p className='sauce-choice'>Alfredo Sauce</p>  
         </label>
-        <label htmlFor='sauce'>
+        <label htmlFor='sauce' className='sauce-form'>
            
             <input
                 id='sauce'
@@ -144,14 +146,14 @@ export default function Form() {
                 checked={pizzaForm.sauce}
                 value='BBQ Sauce'
                 />
-                BBQ Sauce 
+                <p className='sauce-choice'>BBQ Sauce</p>  
         </label>
 
   {errors.name.length > 0 ? <p className='errors'>{errors.sauce}</p> : null}
 
         <div className='toppings'>Add Toppings</div>
 
-        <label htmlFor='toppings'>
+        <label htmlFor='toppings' className='top-form'>
             
             <input
                 type='checkbox'
@@ -160,12 +162,12 @@ export default function Form() {
                 checked={pizzaForm.toppings}
                 value='Pepperoni'
                 />
-                Pepperoni
+               <p className='top-choice'>Pepperoni</p> 
         </label>
 
       
 
-        <label htmlFor='toppings'>
+        <label htmlFor='toppings' className='top-form'>
             
             <input
                 type='checkbox'
@@ -174,10 +176,10 @@ export default function Form() {
                 checked={pizzaForm.toppings}
                 value="Sausage"
                 />
-                Sausage
+                <p className='top-choice'>Sausage</p> 
         </label>
 
-        <label htmlFor='toppings'>
+        <label htmlFor='toppings' className='top-form'>
             
             <input
                 type='checkbox'
@@ -186,10 +188,10 @@ export default function Form() {
                 checked={pizzaForm.toppings}
                 value='Bacon'
                 />
-                Bacon
+                <p className='top-choice'>Bacon</p> 
         </label>
 
-        <label htmlFor='toppings'>
+        <label htmlFor='toppings' className='top-form'>
             
             <input
                 type='checkbox'
@@ -198,7 +200,7 @@ export default function Form() {
                 checked={pizzaForm.toppings}
                 value='Olives'
                 />
-                Olives
+                <p className='top-choice'>Olives</p> 
         </label>
 
         <label htmlFor="instructions">

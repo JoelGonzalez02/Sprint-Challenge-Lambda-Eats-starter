@@ -6,8 +6,7 @@ import { Route, Link, Switch } from 'react-router-dom';
 
 
 export default function App() {
- 
-  const [pizza, setPizza] = useState('');
+
   return (
     <div className="App">
       <nav>
@@ -23,7 +22,7 @@ export default function App() {
        
         <Route path="/pizza">
          
-          <Form pizza={pizza} />
+          <Form/>
         </Route>
         
         <Route path="/" component={Home} />
