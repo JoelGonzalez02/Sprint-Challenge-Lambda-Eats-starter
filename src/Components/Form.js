@@ -7,8 +7,14 @@ export default function Form() {
     const initialState = {
         name: '',
         size: '',
-        sauce: '',
-        toppings: '',
+        marinara: '',
+        garlicranch: '',
+        alfredo: '',
+        bbq: '',
+        pepperoni: '',
+        sausage: '',
+        bacon: '',
+        olives: '',
         instructions: ''
     }
 
@@ -20,8 +26,14 @@ export default function Form() {
     const formSchema = yup.object().shape({
         name: yup.string().required('Please enter a name').min(2),
         size: yup.string().required('Please select a size'),
-        sauce: yup.boolean().oneOf([true]),
-        toppings: yup.boolean().oneOf([true]),
+        marinara: yup.boolean().oneOf([true], [false]),
+        garlicranch: yup.boolean().oneOf([true], [false]),
+        alfredo: yup.boolean().oneOf([true], [false]),
+        bbq: yup.boolean().oneOf([true], [false]),
+        pepperoni: yup.boolean().oneOf([true], [false]),
+        sausage: yup.boolean().oneOf([true], [false]),
+        bacon: yup.boolean().oneOf([true], [false]),
+        olives: yup.boolean().oneOf([true], [false]),
         instructions: yup.string()
     })
 
@@ -41,8 +53,8 @@ export default function Form() {
        e.persist();
        const newPizzaForm = {
            ...pizzaForm, [e.target.name] : 
-           e.target.type === 'checkbox' ? e.target.checked :
-           e.target.type === 'radio' ? e.target.checked
+           e.target.type === 'checkbox' ? e.target.checked 
+        //    : e.target.type === 'radio' ? e.target.checked
            : e.target.value
        };
        validateChange(e);
@@ -103,48 +115,44 @@ export default function Form() {
       <label htmlFor='sauce' className='sauce-form'>
              
               <input
-                  id='sauce'
-                  type='radio'
-                  name='sauce'
+                  id='sauce1'
+                  type='checkbox'
+                  name='marinara'
                   onChange={handleChange}
                   checked={pizzaForm.sauce}
-                  value='Original Marinara'
                   />
               <p className='sauce-choice'>Original Marinara</p>  
           </label>
           <label htmlFor='sauce' className='sauce-form'>
             
             <input
-                id='sauce'
-                type='radio'
-                name='sauce'
+                id='sauce2'
+                type='checkbox'
+                name='garlicranch'
                 onChange={handleChange}
                 checked={pizzaForm.sauce}
-                value='Garlic Ranch'
                 />
                <p className='sauce-choice'>Garlic Ranch</p>  
         </label>
         <label htmlFor='sauce' className='sauce-form'>
             
             <input
-                id='sauce'
-                type='radio'
-                name='sauce'
+                id='sauce3'
+                type='checkbox'
+                name='alfredo'
                 onChange={handleChange}
                 checked={pizzaForm.sauce}
-                value='Alfredo Sauce'
                 />
               <p className='sauce-choice'>Alfredo Sauce</p>  
         </label>
         <label htmlFor='sauce' className='sauce-form'>
            
             <input
-                id='sauce'
-                type='radio'
-                name='sauce'
+                id='sauce4'
+                type='checkbox'
+                name='bbq'
                 onChange={handleChange}
                 checked={pizzaForm.sauce}
-                value='BBQ Sauce'
                 />
                 <p className='sauce-choice'>BBQ Sauce</p>  
         </label>
@@ -153,52 +161,56 @@ export default function Form() {
 
         <div className='toppings'>Add Toppings</div>
 
-        <label htmlFor='toppings' className='top-form'>
+        <label htmlFor='toppings1' className='top-form'>
             
             <input
+                id='toppings1'
                 type='checkbox'
-                name='toppings'
+                name='pepperoni'
                 onChange={handleChange}
                 checked={pizzaForm.toppings}
-                value='Pepperoni'
+                data-cy='pepperoni'
                 />
                <p className='top-choice'>Pepperoni</p> 
         </label>
 
       
 
-        <label htmlFor='toppings' className='top-form'>
+        <label htmlFor='toppings2' className='top-form'>
             
             <input
+                id='toppings2'
                 type='checkbox'
-                name='toppings'
+                name='sausage'
                 onChange={handleChange}
                 checked={pizzaForm.toppings}
-                value="Sausage"
+                data-cy='sausage'
                 />
                 <p className='top-choice'>Sausage</p> 
         </label>
 
-        <label htmlFor='toppings' className='top-form'>
+        <label htmlFor='toppings3' className='top-form'>
             
             <input
+                id='toppings3'
                 type='checkbox'
-                name='toppings'
+                name='bacon'
                 onChange={handleChange}
                 checked={pizzaForm.toppings}
-                value='Bacon'
+                data-cy='bacon'
                 />
                 <p className='top-choice'>Bacon</p> 
         </label>
 
-        <label htmlFor='toppings' className='top-form'>
+        <label htmlFor='toppings4' className='top-form'>
             
             <input
+                id='toppings4'
                 type='checkbox'
-                name='toppings'
+                name='olives'
                 onChange={handleChange}
                 checked={pizzaForm.toppings}
-                value='Olives'
+                data-cy='olives'
                 />
                 <p className='top-choice'>Olives</p> 
         </label>
@@ -221,6 +233,6 @@ export default function Form() {
       <pre className='pre'>{JSON.stringify(post, null, 2)}</pre>
 
         </form>
-    )
+    );
 
-}
+};
